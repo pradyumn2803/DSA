@@ -3,20 +3,20 @@
 struct Node
 {
     int data;
-    struct Node *next; 
-    struct Node *prev; 
+    struct Node *next;
+    struct Node *prev;
 };
 
 void linkedlist_traversal(struct Node *head)
 {
-    struct Node* ptr= head;
+    struct Node *ptr = head;
     printf("Traversing the linked list......\nElements from left to right:\n");
     while (ptr->next != NULL)
     {
         printf("%d\n", ptr->data);
         ptr = ptr->next;
     }
-        printf("%d\n", ptr->data);
+    printf("%d\n", ptr->data);
 
     printf("\nElements from right to left:\n");
     while (ptr->prev != NULL)
@@ -24,7 +24,7 @@ void linkedlist_traversal(struct Node *head)
         printf("%d\n", ptr->data);
         ptr = ptr->prev;
     }
-        printf("%d\n", ptr->data);
+    printf("%d\n", ptr->data);
 }
 int main()
 {
@@ -37,7 +37,6 @@ int main()
     second = (struct Node *)malloc(sizeof(struct Node));
     third = (struct Node *)malloc(sizeof(struct Node));
     fourth = (struct Node *)malloc(sizeof(struct Node));
-
 
     head->data = 7;
     head->next = second;
