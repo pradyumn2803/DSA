@@ -107,7 +107,7 @@ int main()
         printf("It is not full\n");
     }
 
-    printf("poped %d successfully\n ",pop(s));
+    printf("poped %d successfully\n ",pop(s));//------> last in first out
     printf("poped %d successfully\n ",pop(s));
     printf("poped %d successfully\n ",pop(s));
     printf("poped %d successfully\n ",pop(s));
