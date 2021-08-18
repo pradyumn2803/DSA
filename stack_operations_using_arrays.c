@@ -8,7 +8,7 @@ struct stack
     int *arr;
 };
 
-int is_empty(struct stack *s)
+int is_empty(struct stack *s) // time complexity is O(1)
 {
     if (s->top == -1)
     {
@@ -17,7 +17,7 @@ int is_empty(struct stack *s)
     return 0;
 }
 
-int is_full(struct stack *s)
+int is_full(struct stack *s) // time complexity is O(1)
 {
     if (s->top == s->size - 1)
     {
@@ -26,7 +26,7 @@ int is_full(struct stack *s)
     return 0;
 }
 
-void push(struct stack *s, int number)
+void push(struct stack *s, int number) // time complexity is O(1)
 {
     if (is_full(s))
     {
@@ -40,7 +40,7 @@ void push(struct stack *s, int number)
     }
 }
 
-int pop(struct stack *s)
+int pop(struct stack *s) // time complexity is O(1)
 {
     if (is_empty(s))
     {
@@ -55,7 +55,7 @@ int pop(struct stack *s)
     }
 }
 
-int peek(struct stack *s, int index)
+int peek(struct stack *s, int index) // time complexity is O(1)
 {
     int array_index = s->top - index + 1;
     if (array_index < 0)
@@ -68,11 +68,13 @@ int peek(struct stack *s, int index)
     }
 }
 
-int stack_top(struct stack* s){
+int stack_top(struct stack *s)  // time complexity is O(1)
+{ 
     return s->arr[s->top];
 }
 
-int stack_bottom(struct stack* s){
+int stack_bottom(struct stack *s)  // time complexity is O(1)
+{ 
     return s->arr[0];
 }
 
@@ -141,7 +143,7 @@ int main()
         printf("element at position %d is %d\n", i, peek(s, i));
     }
 
-    printf("\n%d is the top value\n",stack_top(s));
+    printf("\n%d is the top value\n", stack_top(s));
     printf("%d is the bottom value\n", stack_bottom(s));
 
     printf("poped %d successfully\n", pop(s)); //------> last in first out
