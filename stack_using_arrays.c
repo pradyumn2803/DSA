@@ -86,7 +86,7 @@ int main()
     push(s,6);
     push(s,12);
     push(s,15);//----> last element to be pushed and first element to be poped
-    push(s,79);//-----> stack overflow 
+    push(s,79);//-----> stack overflow!!
     
     printf("\nAfter Push\n");
     if (is_empty(s))
@@ -113,7 +113,7 @@ int main()
     printf("poped %d successfully\n ",pop(s));
     printf("poped %d successfully\n ",pop(s));
     printf("poped %d successfully\n ",pop(s));
-    printf("poped %d successfully\n ",pop(s));//-->stack underflow
+    printf("poped %d successfully\n ",pop(s));//-->stack underflow!!
     
 
 
