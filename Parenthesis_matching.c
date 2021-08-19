@@ -83,7 +83,8 @@ int Parenthesis_match(char *exp)
 
 int main()
 {
-    char *s = "((8)*(9))";
+    char *s = "((8)*(9))"; //parenthesis matching only checks the parenthesis. It will return true even if the expression does not validate.like if the expression is ((8)(*9)). 
+    // This equation has balanced parenthesis but the expression passed is invalid
     if (Parenthesis_match(s))
     {
         printf("Balanced");
