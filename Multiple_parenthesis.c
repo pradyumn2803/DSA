@@ -75,7 +75,7 @@ int match(char a, char b)
 
 int check_parenthesis(char *exp)
 {
-    struct stack *sp;
+    struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
     sp->size = strlen(exp);
     sp->top = -1;
     sp->arr = (char *)malloc(sp->size * sizeof(char));
