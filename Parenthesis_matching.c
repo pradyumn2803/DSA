@@ -54,7 +54,7 @@ void pop(struct stack *sp)
 int Parenthesis_match(char *exp)
 {
     //initialised a stack structure
-    struct stack *sp;
+    struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
     sp->size = strlen(exp);
     sp->top = -1;
     sp->arr = (char *)malloc(sp->size * sizeof(char)); // initialise structure array to
