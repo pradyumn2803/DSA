@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h>
 
 struct stack
 {
@@ -54,7 +55,7 @@ int Parenthesis_match(char *exp)
 {
     //initialised a stack structure
     struct stack *sp;
-    sp->size = 100;
+    sp->size = strlen(exp);
     sp->top = -1;
     sp->arr = (char *)malloc(sp->size * sizeof(char));// initialise structure array to 
     //push '(' this into array and pop out ')' 
