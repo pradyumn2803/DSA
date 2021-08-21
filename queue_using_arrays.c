@@ -106,7 +106,7 @@ void enqueue(struct queue *q, int val)
         printf("Last Value:%d\n",last_value(q));
         // printf("Enter the position(>0):");
         // scanf("%d",&index);
-        // while(index<=0 || index >q->r){//since we are enqueueing 6 values
+        // while(index<=0 || index >q->r){// the index passed should be valid
         //     printf("Enter the position(>0):");
         //     scanf("%d",&index);
         // } 
@@ -125,7 +125,7 @@ void enqueue(struct queue *q, int val)
         
         // printf("Enter the position(>0):");
         // scanf("%d",&index);
-        // while(index<=0 || index>(q->r-q->f)){// since we are dequeueing 3 values
+        // while(index<=0 || index>(q->r-q->f)){//the index passed should be valid
         //     printf("Enter the position(>0):");
         //     scanf("%d",&index);
         // }
