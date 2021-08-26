@@ -1,72 +1,87 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-// time complexity is O(n2)
-void printArray(int *A, int n)
+/*  
+   TIme Complexity- O(n^2) --*/
+
+void Print_Array(int *arr, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf("%d ", A[i]);
+        printf("%d\t", arr[i]);
     }
     printf("\n");
 }
 
-int partition(int A[], int low, int high)
+void Input(int *arr, int n)
 {
-    int pivot = A[low];
+    for (int i = 0; i < n; i++)
+    {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+}
+
+int partition(int *arr, int low, int high)
+{
+    int pivot = arr[low], temp;
     int i = low + 1;
     int j = high;
-    int temp;
 
     do
     {
-        while (A[i] <= pivot)
+        while (arr[i] <= pivot)
         {
             i++;
         }
 
-        while (A[j] > pivot)
+        while (arr[j] > pivot)
         {
             j--;
         }
 
         if (i < j)
         {
-            temp = A[i];
-            A[i] = A[j];
-            A[j] = temp;
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
     } while (i < j);
 
-    // Swap A[low] and A[j]
-    temp = A[low];
-    A[low] = A[j];
-    A[j] = temp;
+    temp = arr[low];
+    arr[low] = arr[j];
+    arr[j] = temp;
+
     return j;
 }
 
-void quickSort(int A[], int low, int high)
+void quick_sort(int *arr, int low, int high) 
 {
-    int partitionIndex; // Index of pivot after partition
-
+    int partitionindex;
     if (low < high)
     {
-        partitionIndex = partition(A, low, high); 
-        quickSort(A, low, partitionIndex - 1);  // sort left subarray 
-        quickSort(A, partitionIndex + 1, high); // sort right subarray
+        partitionindex = partition(arr, low, high);
+        quick_sort(arr, low, partitionindex - 1);
+        quick_sort(arr, partitionindex + 1, high);
     }
 }
 
 int main()
 {
-    //int A[] = {3, 5, 2, 13, 12, 3, 2, 13, 45};
-    int A[] = {9, 4, 4, 8, 7, 5, 6};
-    // 3, 5, 2, 13, 12, 3, 2, 13, 45
-    // 3, 2, 2, 13i, 12, 3j, 5, 13, 45
-    // 3, 2, 2, 3j, 12i, 13, 5, 13, 45 --> first call to partition returns 3
-    int n = 9;
-    n =7;
-    printArray(A, n);
-    quickSort(A, 0, n - 1);
-    printArray(A, n);
+    int n, low, high;
+
+    printf("Enter size :");
+    scanf("%d", &n);
+
+    int *arr = (int *)malloc(n * sizeof(int));
+
+    low = 0;
+    high = n - 1;
+
+    Input(arr, n);
+    quick_sort(arr, low, high);
+    printf("The sorted array is\n");
+    Print_Array(arr, n);
+
     return 0;
 }
