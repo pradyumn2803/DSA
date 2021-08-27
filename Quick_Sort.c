@@ -3,8 +3,8 @@
 
 /*  
    Time Complexity- 
-    best case- O(nlogn)----when the middle of the array is a pivot
-    worst case-O(n^2)----when the middle is not a pivot .for n elements (n-1) 
+    best case- O(nlogn)----when the middle of the array is a pivot.
+    worst case-O(n^2)----when the middle is not a pivot .for n elements (n-1)
     times the partition needs to be done.
     average case-O(nlogn).    
 */
