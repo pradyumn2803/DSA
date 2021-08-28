@@ -56,8 +56,48 @@ int isBST(struct node *n)
     return 1;
 }
 
+struct node *search(struct node *n, int key)
+{
+    if (n == NULL)
+    {
+        return NULL;
+    }
+    if (n->data == key)
+    {
+        return n;
+    }
+    else if (n->data < key)
+    {
+        return search(n->right, key);
+    }
+    else if (n->data > key)
+    {
+        return search(n->left, key);
+    }
+}
+
+struct node *iter_search(struct node *n, int key)
+{
+    while (n != NULL)
+    {
+        if (n->data == key)
+        {
+            return n;
+        }
+        else if (n->data < key)
+        {
+            n = n->right;
+        }
+        else
+        {
+            n = n->left;
+        }
+    }
+}
+
 int main()
 {
+    int key;
     struct node *p = create_node(5);
     struct node *p1 = create_node(3);
     struct node *p2 = create_node(6);
@@ -73,5 +113,37 @@ int main()
     inorder(p);
     printf("\n");
     printf("The function for checking the binary search tree returns %d", isBST(p));
+    printf("\n");
+
+    // for recursive search in a binary search tree
+    printf("Enter the key you want to search: ");
+    printf("\n");
+    scanf("%d", &key);
+
+    struct node *n = search(p, key);
+    if (n != NULL)
+    {
+        printf("found %d using recursion", n->data);
+    }
+    else
+    {
+        printf("not found");
+    }
+    printf("\n");
+
+    // for iterative search in a binary search tree
+    printf("Enter the key you want to search: ");
+    printf("\n");
+    scanf("%d", &key);
+
+    struct node *a = iter_search(p, key);
+    if (a != NULL)
+    {
+        printf("found %d using iteration", a->data);
+    }
+    else
+    {
+        printf("not found");
+    }
     return 0;
 }
