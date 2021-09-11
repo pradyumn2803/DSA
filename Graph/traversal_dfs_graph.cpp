@@ -6,7 +6,7 @@ using namespace std;
 // time complexity is O(N+E)
 // where N-no. of nodes,E- travelling through adkacent nodes
 // Space complexity is O(N+E)+O(N)+O(N)
-// space for adjacency list , queue , vis array  
+ 
 
 class solution
 {
@@ -29,7 +29,7 @@ public:
         vector<int> storedfs;
         vector<int> vis(v + 1, 0);
 
-        for (int i = 1; i < v; i++)
+        for (int i = 1; i <= v; i++)
         {
             if (!vis[i])
             {
