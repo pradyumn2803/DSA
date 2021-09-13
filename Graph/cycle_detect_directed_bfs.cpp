@@ -2,7 +2,7 @@
 using namespace std;
 
 // time complexity is O(N+E)
-// space complexity is O(N)+O(N)+O(N)
+// space complexity is O(N)+O(N)
 
 class solution
 {
@@ -27,13 +27,11 @@ public:
                 q.push(i);
             }
         }
-        vector<int> c;
         int count = 0;
         while (!q.empty())
         {
             int node = q.front();
             q.pop();
-            c.push_back(node);
             count++;
 
             for (auto iter : adj[node])
