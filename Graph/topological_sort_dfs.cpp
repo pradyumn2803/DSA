@@ -2,7 +2,8 @@
 using namespace std;
 
 //time complexity=O(N+E)
-//space complexity=O(N)+O(N)+O(N)
+//space complexity=O(N)+O(N)
+//auxiliary space complexity O(N)
 // topological sort is only possible for directed acyclic graph(DAG)
 //a topolocial sort means sorting the nodes in a way like if there exists 
 // two sets u and v such that u->v then u will always come before v.

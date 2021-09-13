@@ -2,6 +2,9 @@
 #include <vector>
 #include <cstring>
 using namespace std;
+// time complexity is O(N+E)
+// where N-no. of nodes,E- travelling through adkacent nodes
+// Space complexity is O(N+E)+O(N)+O(N)
 
 class solution
 {
