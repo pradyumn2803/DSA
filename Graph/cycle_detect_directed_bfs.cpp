@@ -2,7 +2,7 @@
 using namespace std;
 
 // time complexity is O(N+E)
-// space complexity is O(N)+O(N)
+// space complexity is O(N)+O(N)+O(N)
 
 class solution
 {
