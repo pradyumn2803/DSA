@@ -24,15 +24,6 @@ int precedence(char ch)
     return 0;
 }
 
-int is_operator(char ch)
-{
-    if (ch == '*' || ch == '/' || ch == '+' || ch == '-')
-    {
-        return 1;
-    }
-    return 0;
-}
-
 int is_empty(struct stack *sp)
 {
     if (sp->top == -1)
@@ -51,7 +42,7 @@ int is_full(struct stack *sp)
     return 0;
 }
 
-char push(struct stack *sp, char ch)
+void push(struct stack *sp, char ch)
 {
     if (is_full(sp))
     {
