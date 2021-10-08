@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 struct stack
 {
@@ -96,7 +97,7 @@ char *infix_to_postfix(char *ch)
 
     while (ch[i] != '\0')
     {
-        if (!(is_operator(ch[i])))
+        if (isdigit(ch[i]) || isalpha(ch[i]))
         {
             postfix[j] = ch[i];
             i++;
@@ -104,7 +105,21 @@ char *infix_to_postfix(char *ch)
         }
         else
         {
-            if (precedence(ch[i]) > precedence(stack_Top(sp)))
+            if (ch[i] == '(')
+            {
+                push(sp, ch[i]);
+                i++;
+            }
+            else if (ch[i] == ')')
+            {
+                while (stack_Top(sp) != '(')
+                {
+                    postfix[j++] = pop(sp);
+                }
+                pop(sp);
+                i++;
+            }
+            else if (precedence(ch[i]) > precedence(stack_Top(sp)))
             {
                 push(sp, ch[i]);
                 i++;
@@ -128,7 +143,9 @@ char *infix_to_postfix(char *ch)
 
 int main()
 {
-    char *c = "3*4+6/7", *p;
+    char *c = (char *)malloc(1000 * sizeof(char));
+    char *p = (char *)malloc(1000 * sizeof(char));
+    scanf("%[^\n]%*c", c);
     p = infix_to_postfix(c);
     printf("%s", p);
     return 0;
