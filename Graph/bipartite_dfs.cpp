@@ -18,7 +18,7 @@ class solution
         {
             if (colour[iter] == -1)
             {
-                colour[iter] = 1 - colour[iter];
+                colour[iter] = 1 - colour[i];
                 if (!check_bipartite(iter, adj, colour))
                 {
                     return false;
@@ -67,11 +67,11 @@ int main()
     bool c = s.is_bipartite(n, adj);
     if (c)
     {
-        cout << "one of the components of the graph is bipartite" << endl;
+        cout << "one of the components of the graph is bipartite and even cycle" << endl;
     }
     else
     {
-        cout << "none of the components are bipartite" << endl;
+        cout << "none of the components are bipartite and odd cycle" << endl;
     }
     return 0;
 }
