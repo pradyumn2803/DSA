@@ -6,7 +6,6 @@ using namespace std;
     ll t;       \
     cin >> t;   \
     while (t--) \
-        ;
 int arr[100005];
 
 void insert(vector<int> &v, int val)
