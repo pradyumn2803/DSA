@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 struct stack
 {
@@ -20,6 +19,15 @@ int precedence(char ch)
     if (ch == '+' || ch == '-')
     {
         return 2;
+    }
+    return 0;
+}
+
+int is_operator(char ch)
+{
+    if (ch == '*' || ch == '/' || ch == '+' || ch == '-')
+    {
+        return 1;
     }
     return 0;
 }
@@ -75,6 +83,14 @@ char stack_Top(struct stack *sp)
     return sp->arr[sp->top];
 }
 
+int isbracket(char c)
+{
+    if (c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']')
+    {
+        return 1;
+    }
+    return 0;
+}
 char *infix_to_postfix(char *ch)
 {
     struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
@@ -88,7 +104,7 @@ char *infix_to_postfix(char *ch)
 
     while (ch[i] != '\0')
     {
-        if (isdigit(ch[i]) || isalpha(ch[i]))
+        if (!(is_operator(ch[i])) && !isbracket(ch[i]))
         {
             postfix[j] = ch[i];
             i++;
@@ -134,8 +150,7 @@ char *infix_to_postfix(char *ch)
 
 int main()
 {
-    char *c = (char *)malloc(1000 * sizeof(char));
-    char *p = (char *)malloc(1000 * sizeof(char));
+    char *c, *p;
     scanf("%[^\n]%*c", c);
     p = infix_to_postfix(c);
     printf("%s", p);
