@@ -138,6 +138,30 @@ bool isprime(int n)
     }
     return false;
 }
+// finding x^n in logn time
+double myPow(double x, int n)
+{
+    long long int nn = n;
+    double ans = 1.0;
+    if (nn < 0)
+        nn = -1 * nn;
+    while (nn)
+    {
+        if (nn % 2)
+        {
+            ans = ans * x;
+            nn--;
+        }
+        else
+        {
+            x = x * x;
+            nn /= 2;
+        }
+    }
+    if (n < 0)
+        ans = (double)1.0 / (double)ans;
+    return ans;
+}
 
 // finding out the number is prime or not
 void Sieve()
@@ -259,6 +283,25 @@ int ETF(int n)
     }
     return cnt;
 }
+
+/*
+    MODULAR ARITHMETIC-
+    - a is modular congruent to b under modular N if a%N = b%N
+    - if  a congruent(triple equal sign) b(mod N) then (a-b) is divisible by N i.e. (a-b)%N = 0
+    - (a+b+c)%N = (a%N + b%N + c%N)%N
+    - (a*b*c)%N = (a%N * b%N * c%N)%N
+    - if a*b = c
+      then (a%N) * (b%N) = (c%N)
+*/
+
+/*
+    MODULAR INVERSE-
+    - a.X = 1(modP) , where X = 1/b, and X is the modular inverse of the given number b
+    - for modular inverse of a number to exist GCD(b,P) = 1
+    - Eg-
+      (6/2)%5 = ((6%5)*(3%5))%5 [3 being the multiplicative inverse of 2 since 2*3%5 = 1]
+              = (1*3)%5 = 3
+*/
 
 int main()
 {
