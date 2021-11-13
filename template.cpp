@@ -296,10 +296,10 @@ int ETF(int n)
 
 /*
     MODULAR INVERSE-
-    - a.X = 1(modP) , where X = 1/b, and X is the modular inverse of the given number b
-    - for modular inverse of a number to exist GCD(b,P) = 1
+    - a*XmodP= 1 , where X = 1/a, and X is the modular inverse of the given number a
+    - for modular inverse of a number to exist GCD(a,P) = 1
     - Eg-
-      (6/2)%5 = ((6%5)*(3%5))%5 [3 being the multiplicative inverse of 2 since 2*3%5 = 1]
+      (6/2)%5 = ((6%5)*(3%5))%5 [3 being the modular multiplicative inverse of 2 since 2*3%5 = 1]
               = (1*3)%5 = 3
 */
 
