@@ -303,6 +303,69 @@ int ETF(int n)
               = (1*3)%5 = 3
 */
 
+// finding modular inverse given that m is prime using fermant theorem in logn
+// acc to fermant's theorem
+// a^m-1 mod m=1(dividing both side by a)
+// a^m-2 mod m=a^-1
+// we have to pass mod_inverse(a,m-2,m) from int main
+int mod_inverse(int a, int n, int m)
+{
+    int ans = 1;
+    while (n)
+    {
+        if (n % 2)
+        {
+            ans = ((ans % m) * (a % m)) % m;
+            n--;
+        }
+        else
+        {
+            a = (a * a) % m;
+            n /= 2;
+        }
+    }
+    return ans;
+}
+
+// if m is not prime then general way of finding modular inverse in logn time
+int modular_inverse(int a, int m)
+{
+    int x, y;
+    int gcd = extended_euclid_algo(a, m, x, y);
+    if (gcd != 1)
+    {
+        return 0;
+    }
+    // m is added to handle negative x
+    int res = (x % m + m) % m;
+    return res;
+}
+
+// chinese remainder theorem in nlogn
+// it is used in cases like:
+// find minimum **number** which gives folowing results:
+// num%2=1
+// num%3=2
+// num%5=2
+
+int CRT(int num[], int rem[], int size)
+{
+    int prod = 1;
+    for (int i = 0; i < size; i++)
+    {
+        prod *= num[i];
+    }
+    int result = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        int pp = prod / num[i];
+        result += rem[i] * modular_inverse(pp, num[i]) * pp;
+    }
+
+    return result % prod;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
