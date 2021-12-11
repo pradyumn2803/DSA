@@ -10,6 +10,7 @@ using namespace std;
 #define vvc vector<vector<char>>
 #define pb emplace_back
 
+int mod = 1000000007;
 int arr[10000000];
 int N = 10000000;
 bool sieve[10000001];
@@ -161,6 +162,30 @@ double myPow(double x, int n)
     if (n < 0)
         ans = (double)1.0 / (double)ans;
     return ans;
+}
+
+ll Power(ll x, ll n)
+{
+    ll nn = n;
+    ll ans = 1;
+    if (nn < 0)
+        nn = -1 * nn;
+    while (nn)
+    {
+        if (nn % 2)
+        {
+            ans = (ans % mod * x % mod) % mod;
+            nn--;
+        }
+        else
+        {
+            x = (x % mod * x % mod) % mod;
+            nn /= 2;
+        }
+    }
+    if (n < 0)
+        ans = 1 / ans;
+    return ans % mod;
 }
 
 // finding out the number is prime or not
@@ -341,12 +366,10 @@ int modular_inverse(int a, int m)
     return res;
 }
 
-// chinese remainder theorem in nlogn
-// it is used in cases like:
-// find minimum **number** which gives folowing results:
-// num%2=1
-// num%3=2
-// num%5=2
+// CHINESE REMAINDER THEOREM-->
+//     We are given 2 arrays -->nums,rem(where both the arrays have co-prime pairs of numbers) and we are asked to find a number a such that->
+//     a%num[i] = rem[i]
+//     p is the product of all the elements of nums array.
 
 int CRT(int num[], int rem[], int size)
 {
@@ -364,6 +387,29 @@ int CRT(int num[], int rem[], int size)
     }
 
     return result % prod;
+}
+
+// Finding Binomial Coefficient nCk
+ll F[10000001];
+void Binomial_Coefficient()
+{
+    F[0] = F[1] = 1;
+
+    // finding factorial of the number upto 1000000
+    for (ll i = 2; i < 1000001; i++)
+    {
+        F[i] = (F[i - 1] * i) % mod;
+    }
+}
+
+int NCK(int n, int k)
+{
+    if (k > n)
+        return 0;
+    ll res = F[n];
+    res = (res * (Power(F[k], mod - 2))) % mod;
+    res = (res * (Power(F[n - k], mod - 2))) % mod;
+    return res % mod;
 }
 
 int main()
