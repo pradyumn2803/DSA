@@ -61,7 +61,7 @@ int gcd(int a, int b)
     return gcd(b, a % b);
 }
 
-// extended euclid algorithm for finding (x,y) such that a.x+b.y=gcd(a,b)
+// extended euclid algorithm for finding (x,y) such that a.x + b.y = gcd(a,b)
 int extended_euclid_algo(int a, int b, int &x, int &y)
 {
     if (b == 0)
