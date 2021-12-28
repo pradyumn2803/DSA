@@ -7,6 +7,9 @@ using namespace std;
     while (t--)
 int arr[10000001];
 
+// time complexity= O(2^N)XN
+// space complexity= O(N)
+
 void Subsequence(int i, vector<int> &ds, int arr[], int n)
 {
     if (i == n)
