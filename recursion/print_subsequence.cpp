@@ -1,5 +1,6 @@
 // Print subsequence whose sum is k
-
+// time complexity = O(2^N)*O(N)
+// space complexity = O(N) 
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
