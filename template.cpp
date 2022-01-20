@@ -412,6 +412,35 @@ int NCK(int n, int k)
     return res % mod;
 }
 
+int bin_to_dec(string s)
+{
+    int sum = 0;
+    for (int i = 0; i < s.length(); i++)
+    {
+        if ((s[i] - '0') & 1)
+        {
+            sum += (1 << (s.length() - i - 1));
+        }
+    }
+    return sum;
+}
+
+/* -------------------------  ------------------------------------
+1.(num & (1<<i) != 0)----> To check for set bit
+2.(num | (1<<i)) -----> To set ith bit
+3.(num & (~(1<<i))) -----> To unset ith bit
+4.(num ^ (1<<i)) -----> To toggle the bit
+*/
+string dec_to_bin(int n)
+{
+    string s = "";
+    for (int i = 10; i >= 0; i--)
+    {
+        s += to_string((n >> i) & 1);
+    }
+    return s;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
