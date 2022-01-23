@@ -464,6 +464,27 @@ a=a^b
 b=a^b
 a=a^b
 */
+/*
+BIT Masking
+suppose there are 4 type of fruits:
+0
+1
+2
+3
+first person:- 2 3
+second person:- 1 2 3
+Third person:- 0 1
+if we are asked to find the common fruits or intersection between any 2 persons
+then we use BIT Masking like:
+first person:- 2 3 -------> setting the 2nd and 3rd bit--->1100
+second person:- 1 2 3--> 1110
+Third person:- 0 1--> 0011
+to find intersection simply take (&)AND operation between any persons
+Limitation:- Not to be used in questions where size is more than 64
+*/
+/*
+
+*/
 int main()
 {
     ios_base::sync_with_stdio(false);
