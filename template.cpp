@@ -430,6 +430,8 @@ int bin_to_dec(string s)
 2.(num | (1<<i)) -----> To set ith bit
 3.(num & (~(1<<i))) -----> To unset ith bit
 4.(num ^ (1<<i)) -----> To toggle the bit
+__builtin_popcountll(s)-->returns total number of set bits in integer s
+5. To check whether the ith bit is set:- (number &(1<<(ith bit))) & 1!=0
 */
 string dec_to_bin(int n)
 {
@@ -440,7 +442,28 @@ string dec_to_bin(int n)
     }
     return s;
 }
-
+/*
+if we want to convert lowercase to uppercase
+character & '_'
+if we want to convert uppercase to lowercase
+character | ' '
+**** these can be used if we want to change a number into another ****
+to unset upto ith bit from LSB
+number & (~((1<<i+1)-1))
+to unset upto ith bit from MSB
+number & ((1<<i+1)-1)
+****** to check power of 2 ******
+(n&(n-1)) non zero
+*/
+/*
+Property of XOR is to find the unique element
+if we perform the XOR operation with each element of the array then the final result
+will be the unique element present in the array
+***swap:-***
+a=a^b
+b=a^b
+a=a^b
+*/
 int main()
 {
     ios_base::sync_with_stdio(false);
