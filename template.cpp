@@ -164,6 +164,18 @@ double myPow(double x, int n)
     return ans;
 }
 
+// to find power by binary exponentiation in logn time
+int power_recursive(int a, int b)
+{
+    if (b == 0)
+        return 1;
+    int exp = power_recursive(a, b / 2);
+    if (b & 1)
+        return (a * ((exp * 1LL * exp) % M)) % M;
+    else
+        return (exp * 1LL * exp) % M;
+}
+
 ll Power(ll x, ll n)
 {
     ll nn = n;
@@ -268,6 +280,8 @@ void Segmented_Sieve(int l, int r)
 
 // to find Euler Totient Function or count of pair of co-primes(numbers are said to be co-primes if their gcd=1)
 // time complexity =O(rootn)
+// phi(N)= N*pie(1-1/p)----> whwere p is the prime factors of N and phi is the Eular Totient function
+// note we have to take distinct prime factors of N
 int Euler_Totient_Function(int n)
 {
     int res = n;
