@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
+#define M 1e+9
 #define tc    \
     ll t;     \
     cin >> t; \
@@ -15,6 +16,7 @@ int arr[10000000];
 int N = 10000000;
 bool sieve[10000001];
 int a[10000001];
+vector<int> hp(100000000, 0), lp(100000000, 0);
 // taking input of array
 void array_input(ll n)
 {
@@ -201,6 +203,7 @@ ll Power(ll x, ll n)
 }
 
 // finding out the number is prime or not
+// time complexity is O(N)*O(log(log(N)))
 void Sieve()
 {
     for (int i = 2; i <= N; i++)
@@ -212,12 +215,34 @@ void Sieve()
     {
         if (sieve[i] == true)
         {
+            hp[i] = lp[i] = i;
             for (int j = i * i; j <= N; j += i)
             {
                 sieve[j] = false;
+                hp[j] = i; // The prime number in jth location replaces i as soon as it finds a greater prime number dividing it. Hence the value at the jth location gets changed every time and we get the highest number stored in the location.
+                if (lp[j] == 0)
+                {
+                    lp[j] = i; // The prime number in jth location replaces i (which was 0 initially)as soon as it finds the first prime number dividing it. Hence we get the smallest one.
+                }
             }
         }
     }
+}
+// prime factors in logn time using sieve
+vector<int> prime_factors(int n)
+{
+    Sieve();
+    vector<int> prime;
+    while (n > 1)
+    {
+        int prime_fact = hp[n];
+        while (n % prime_fact == 0)
+        {
+            n /= prime_fact;
+            prime.push_back(prime_fact);
+        }
+    }
+    return prime;
 }
 
 vector<int> generate_primes(int n)
