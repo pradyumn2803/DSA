@@ -239,8 +239,8 @@ vector<int> prime_factors(int n)
         while (n % prime_fact == 0)
         {
             n /= prime_fact;
-            prime.push_back(prime_fact);
         }
+        prime.push_back(prime_fact);
     }
     return prime;
 }
