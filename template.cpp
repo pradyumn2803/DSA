@@ -211,12 +211,12 @@ void Sieve()
         sieve[i] = true;
     }
 
-    for (int i = 2; i * i <= N; i++)
+    for (int i = 2; i <= N; i++)
     {
         if (sieve[i] == true)
         {
             hp[i] = lp[i] = i;
-            for (int j = i * i; j <= N; j += i)
+            for (int j = 2 * i; j <= N; j += i)
             {
                 sieve[j] = false;
                 hp[j] = i; // The prime number in jth location replaces i as soon as it finds a greater prime number dividing it. Hence the value at the jth location gets changed every time and we get the highest number stored in the location.
