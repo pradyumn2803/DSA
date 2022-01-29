@@ -167,16 +167,16 @@ double myPow(double x, int n)
 }
 
 // to find power by binary exponentiation in logn time
-int power_recursive(int a, int b)
-{
-    if (b == 0)
-        return 1;
-    int exp = power_recursive(a, b / 2);
-    if (b & 1)
-        return (a * ((exp * 1LL * exp) % M)) % M;
-    else
-        return (exp * 1LL * exp) % M;
-}
+// int power_recursive(int a, int b)
+// {
+//     if (b == 0)
+//         return 1;
+//     int exp = power_recursive(a, b / 2);
+//     if (b & 1)
+//         return (a * ((exp * 1LL * exp) % M)) % M;
+//     else
+//         return (exp * 1LL * exp) % M;
+// }
 
 ll Power(ll x, ll n)
 {
