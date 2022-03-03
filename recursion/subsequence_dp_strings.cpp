@@ -6,6 +6,8 @@ using namespace std;
     cin >> t; \
     while (t--)
 
+// tc---> O(N X M) +O(N + M)
+
 string lcs(string s, string t)
 {
     int n = s.size();
