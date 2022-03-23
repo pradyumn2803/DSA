@@ -522,7 +522,8 @@ to find intersection simply take (&)AND operation between any persons
 Limitation:- Not to be used in questions where size is more than 64
 */
 /*
-
+    to find the most_significant bit or the leftmost set_bit of a number
+    num & (~(num-1))
 */
 int main()
 {
